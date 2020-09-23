@@ -14,8 +14,8 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
-import com.example.currenciesviewer.livedata.LiveArgEvent
-import com.example.currenciesviewer.livedata.LiveEvent
+import com.example.currenciesviewer.base.livedata.LiveArgEvent
+import com.example.currenciesviewer.base.livedata.LiveEvent
 
 abstract class BaseDialogFragment<TViewModel> : DialogFragment() where TViewModel : BaseViewModel {
 

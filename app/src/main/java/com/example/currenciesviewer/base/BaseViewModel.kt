@@ -4,8 +4,8 @@ import android.app.Application
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import com.example.currenciesviewer.livedata.LiveArgEvent
-import com.example.currenciesviewer.livedata.LiveEvent
+import com.example.currenciesviewer.base.livedata.LiveArgEvent
+import com.example.currenciesviewer.base.livedata.LiveEvent
 import io.reactivex.disposables.Disposable
 
 abstract class BaseViewModel(application: Application) : AndroidViewModel(application) {
@@ -16,7 +16,8 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
     protected val context: Context by lazy { getApplication<Application>() }
 
     val closeCommand = LiveEvent()
-    val showMessageCommand = LiveArgEvent<String>()
+    val showMessageCommand =
+        LiveArgEvent<String>()
 
     open fun destroy() {
         subscriptions.forEach { it.dispose() }

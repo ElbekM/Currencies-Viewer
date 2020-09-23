@@ -1,4 +1,4 @@
-package com.example.currenciesviewer.livedata
+package com.example.currenciesviewer.base.livedata
 
 import android.util.Log
 import androidx.annotation.MainThread
