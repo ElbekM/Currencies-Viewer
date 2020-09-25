@@ -2,6 +2,7 @@ package com.example.currenciesviewer.screens.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.example.currenciesviewer.base.utils.Utils.setVisibility
 import com.example.currenciesviewer.model.Valute
 import kotlinx.android.synthetic.main.item_exchange_info.view.*
 
@@ -15,10 +16,8 @@ class ValuteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             valuteNominalValueTextView.text = valuteInfo.nominal
             currentRateValueTextView.text = valuteInfo.value
             deltaValueTextView.text = valuteInfo.delta
-            deltaStateUpImageView.visibility = visible(valuteInfo.deltaUp)
-            deltaStateDownImageView.visibility = visible(!valuteInfo.deltaUp)
+            deltaStateUpImageView.visibility = setVisibility(valuteInfo.deltaUp)
+            deltaStateDownImageView.visibility = setVisibility(!valuteInfo.deltaUp)
         }
     }
-
-    private fun visible(visibility: Boolean) = if (visibility) View.VISIBLE else View.GONE
 }

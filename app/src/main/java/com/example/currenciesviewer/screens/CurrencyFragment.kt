@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.currenciesviewer.R
 import com.example.currenciesviewer.base.BaseDialogFragment
+import com.example.currenciesviewer.base.utils.Utils.setVisibility
 import com.example.currenciesviewer.screens.adapter.ValuteViewAdapter
 import kotlinx.android.synthetic.main.fragment_currency.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -48,6 +49,14 @@ class CurrencyFragment : BaseDialogFragment<CurrencyViewModel>() {
             publicationDate.observe { date ->
                 date?.let { exchangeDateTextView.text = it }
             }
+
+            progressBarVisible.observe { visible ->
+                visible?.let { progressBar.visibility = setVisibility(it) }
+            }
+
+            isRefreshing.observe { refreshing ->
+                refreshing?.let { swipeRefreshLayout.isRefreshing = it }
+            }
         }
     }
 
@@ -56,6 +65,9 @@ class CurrencyFragment : BaseDialogFragment<CurrencyViewModel>() {
     }
 
     private fun initViews() {
+        swipeRefreshLayout.setOnRefreshListener {
+            viewModel.refreshData()
+        }
         valutesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
