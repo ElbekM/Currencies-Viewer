@@ -1,8 +1,7 @@
-package com.example.currenciesviewer.database
+package com.example.currenciesviewer.model.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.currenciesviewer.model.Valute
 import java.util.*
 
 @Entity

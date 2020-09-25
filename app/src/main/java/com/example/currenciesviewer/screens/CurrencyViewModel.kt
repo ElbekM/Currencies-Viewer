@@ -62,15 +62,14 @@ class CurrencyViewModel(
                 progressBarVisible.value = false
                 isRefreshing.value = false
             }
-            .subscribe({
-
-            }, {
+            .subscribe({ }, {
                 valuteInfoDb?.let {
                     valuteList.value = it.second
                     setActualDate(it.first)
                 } ?: refreshData()
 
                 showSnackBar { refreshData() }
+                processError(error = it, display = false)
             })
             .addToSubscriptions()
     }
@@ -86,7 +85,8 @@ class CurrencyViewModel(
 
     private fun setActualDate(date: String?) {
         date?.let {
-            publicationDate.value = it.subSequence(0, it.indexOfFirst{ char -> char == 'T' }).toString()
+            publicationDate.value =
+                it.subSequence(0, it.indexOfFirst { char -> char == 'T' }).toString()
         }
     }
 }

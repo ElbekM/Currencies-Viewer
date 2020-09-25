@@ -52,18 +52,12 @@ abstract class BaseDialogFragment<TViewModel> : DialogFragment() where TViewMode
 
     override fun onResume() {
         super.onResume()
-
         activity!!.requestedOrientation = screenOrientation
-
-        viewModel.start()
     }
 
     override fun onPause() {
         super.onPause()
-
         activity!!.requestedOrientation = arguments!!.getInt(originalScreenOrientationKey)
-
-        viewModel.stop()
     }
 
     @SuppressLint("RestrictedApi")

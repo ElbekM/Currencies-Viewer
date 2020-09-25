@@ -65,9 +65,7 @@ class CurrencyFragment : BaseDialogFragment<CurrencyViewModel>() {
     }
 
     private fun initViews() {
-        swipeRefreshLayout.setOnRefreshListener {
-            viewModel.refreshData()
-        }
+        swipeRefreshLayout.setOnRefreshListener { viewModel.refreshData() }
         valutesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 

@@ -1,7 +1,7 @@
 package com.example.currenciesviewer.database
 
 import androidx.room.TypeConverter
-import com.example.currenciesviewer.model.Valute
+import com.example.currenciesviewer.model.entities.ValuteEntity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.ArrayList

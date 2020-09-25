@@ -1,6 +1,7 @@
 package com.example.currenciesviewer.database
 
 import androidx.room.*
+import com.example.currenciesviewer.model.entities.ValuteInfoEntity
 import io.reactivex.Completable
 import io.reactivex.Single
 
