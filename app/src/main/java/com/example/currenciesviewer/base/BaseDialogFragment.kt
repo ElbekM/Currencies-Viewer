@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.example.currenciesviewer.R
 import com.example.currenciesviewer.base.livedata.LiveArgEvent
@@ -91,6 +92,9 @@ abstract class BaseDialogFragment<TViewModel> : DialogFragment() where TViewMode
     protected open fun onBackPressed() = viewModel.back()
 
     fun <T> LiveArgEvent<T>.observe(observer: (item: T?) -> Unit) =
+        observe(getSuitableLifecycleOwner(), Observer(observer))
+
+    fun <T> MutableLiveData<T>.observe(observer: (item: T?) -> Unit) =
         observe(getSuitableLifecycleOwner(), Observer(observer))
 
     fun LiveEvent.observe(block: () -> Unit) =

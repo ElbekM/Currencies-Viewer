@@ -21,14 +21,17 @@ class CurrencyDto {
         )
 
     private fun jsonToModel(json: JsonObject): List<Valute> = json.keySet().map { key ->
+        val delta = json[key].asJsonObject.getAsJsonPrimitive("Value").asDouble -
+                json[key].asJsonObject.getAsJsonPrimitive("Previous").asDouble
         Valute(
-            json[key].asJsonObject.getAsJsonPrimitive("ID").asString,
-            json[key].asJsonObject.getAsJsonPrimitive("NumCode").asString,
-            json[key].asJsonObject.getAsJsonPrimitive("CharCode").asString,
-            json[key].asJsonObject.getAsJsonPrimitive("Nominal").asInt,
-            json[key].asJsonObject.getAsJsonPrimitive("Name").asString,
-            json[key].asJsonObject.getAsJsonPrimitive("Value").asDouble,
-            json[key].asJsonObject.getAsJsonPrimitive("Previous").asDouble
+            id = json[key].asJsonObject.getAsJsonPrimitive("ID").asString,
+            numCode = json[key].asJsonObject.getAsJsonPrimitive("NumCode").asString,
+            charCode = json[key].asJsonObject.getAsJsonPrimitive("CharCode").asString,
+            nominal = json[key].asJsonObject.getAsJsonPrimitive("Nominal").asString,
+            name = json[key].asJsonObject.getAsJsonPrimitive("Name").asString,
+            value = json[key].asJsonObject.getAsJsonPrimitive("Value").asString,
+            delta = delta.toString(),
+            deltaUp = delta >= 0
         )
     }
 }

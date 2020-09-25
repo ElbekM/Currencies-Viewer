@@ -4,8 +4,9 @@ data class Valute(
     val id: String,
     val numCode: String,
     val charCode: String,
-    val nominal: Int,
+    val nominal: String,
     val name: String,
-    val value: Double,
-    val previous: Double
+    val value: String,
+    val delta: String,
+    val deltaUp: Boolean
 )

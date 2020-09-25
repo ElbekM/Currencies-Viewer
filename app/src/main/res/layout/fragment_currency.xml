@@ -38,33 +38,27 @@
 
             <TextView
                 android:id="@+id/exchangeTitleTextView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toStartOf="@+id/exchangeDateTextView"
+                android:layout_marginEnd="10dp"
                 android:text="Курс валют на"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/exchangeDateTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:textSize="16sp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/exchangeTitleTextView"
+                android:textColor="@color/black"
+                android:textSize="22sp"
                 tools:text="June 23, 2020" />
-
-            <TextView
-                android:id="@+id/exchangeTimeTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/exchangeDateTextView"
-                android:layout_alignParentEnd="true"
-                android:textSize="16sp"
-                tools:text="11:30 +3" />
 
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/valutesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
