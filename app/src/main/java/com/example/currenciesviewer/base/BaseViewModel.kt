@@ -11,7 +11,6 @@ import io.reactivex.disposables.Disposable
 abstract class BaseViewModel(application: Application) : AndroidViewModel(application) {
 
     private val subscriptions: MutableList<Disposable> = mutableListOf()
-    private val subscriptionsWhileVisible: MutableList<Disposable> = mutableListOf()
 
     protected val context: Context by lazy { getApplication<Application>() }
 
@@ -28,10 +27,7 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
 
     open fun start() {}
 
-    open fun stop() {
-        subscriptionsWhileVisible.forEach { it.dispose() }
-        subscriptionsWhileVisible.clear()
-    }
+    open fun stop() { }
 
     protected fun processError(
         tag: String = "ReminerApp",

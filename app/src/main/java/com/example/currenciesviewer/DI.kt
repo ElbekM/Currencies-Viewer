@@ -3,7 +3,9 @@ package com.example.currenciesviewer
 import android.content.Context
 import com.example.currenciesviewer.api.ApiController
 import com.example.currenciesviewer.api.ApiServiceProvider
-import com.example.currenciesviewer.api.CurrencyService
+import com.example.currenciesviewer.services.CurrencyService
+import com.example.currenciesviewer.database.AppDatabase
+import com.example.currenciesviewer.services.ValuteService
 import com.example.currenciesviewer.screens.CurrencyViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.experimental.dsl.viewModel
@@ -17,7 +19,9 @@ fun initDI(context: Context) {
         modules(module {
             single<ApiServiceProvider>()
             single<CurrencyService>()
+            single<ValuteService>()
 
+            single { AppDatabase.newInstance(context) }
             single {
                 this.get<ApiServiceProvider>(ApiServiceProvider::class, null, null)
                     .currencyRetrofit
