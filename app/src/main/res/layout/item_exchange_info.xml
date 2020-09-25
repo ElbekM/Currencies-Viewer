@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/valuteNameTextView"
                 android:layout_marginTop="3dp"
-                android:text="Букв. код:" />
+                android:text="@string/src_currency_screen_valute_char_code" />
 
             <TextView
                 android:id="@+id/valuteCharCodeValueTextView"
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/valuteCharCodeTextView"
                 android:layout_marginTop="3dp"
-                android:text="Цифр. код:" />
+                android:text="@string/src_currency_screen_valute_num_code" />
 
             <TextView
                 android:id="@+id/valuteNumCodeValueTextView"
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/valuteNumCodeTextView"
                 android:layout_marginTop="3dp"
-                android:text="Едениц:" />
+                android:text="@string/src_currency_screen_valute_nominal"/>
 
             <TextView
                 android:id="@+id/valuteNominalValueTextView"
@@ -104,7 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Курс"
+                android:text="@string/src_currency_screen_rate"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 

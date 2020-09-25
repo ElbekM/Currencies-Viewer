@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Currencies Viewer</string>
+
+    <string name="src_currency_screen_exchange_title">Курс валют на</string>
+    <string name="src_currency_screen_rate">Курс</string>
+    <string name="src_currency_screen_valute_char_code">Букв. код:</string>
+    <string name="src_currency_screen_valute_num_code">Цифр. код:</string>
+    <string name="src_currency_screen_valute_nominal">Едениц:</string>
 </resources>
