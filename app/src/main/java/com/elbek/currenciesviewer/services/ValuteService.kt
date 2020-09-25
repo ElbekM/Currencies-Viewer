@@ -1,5 +1,6 @@
 package com.elbek.currenciesviewer.services
 
+import android.util.Log
 import com.elbek.currenciesviewer.database.AppDatabase
 import com.elbek.currenciesviewer.model.entities.ValuteEntity
 import com.elbek.currenciesviewer.model.entities.ValuteInfoEntity
@@ -11,6 +12,7 @@ import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
+import org.koin.core.logger.KOIN_TAG
 
 class ValuteService(
     private val database: AppDatabase,
@@ -50,4 +52,5 @@ class ValuteService(
                     )
                 )
             }
+            .subscribe({ }, { Log.i(KOIN_TAG,"Error inserting record in DB: $it") })
 }
