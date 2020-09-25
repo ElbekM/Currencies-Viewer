@@ -24,6 +24,7 @@ class CurrencyViewModel(
     val valuteList = MutableLiveData<List<Valute>>()
 
     val isRefreshing = MutableLiveData<Boolean>()
+    val isInternetConnected = MutableLiveData<Boolean>()
 
     override fun destroy() {
         super.destroy()
@@ -31,6 +32,7 @@ class CurrencyViewModel(
     }
 
     fun init() {
+        isInternetConnected.value = true
         progressBarVisible.value = true
 
         apiService.currenciesUpdated
@@ -62,14 +64,16 @@ class CurrencyViewModel(
                 progressBarVisible.value = false
                 isRefreshing.value = false
             }
-            .subscribe({ }, {
-                valuteInfoDb?.let {
-                    valuteList.value = it.second
-                    setActualDate(it.first)
+            .subscribe({
+                isInternetConnected.value = true
+            }, {
+                valuteInfoDb?.let { (date, valutes) ->
+                    valuteList.value = valutes
+                    setActualDate(date)
                 } ?: refreshData()
 
                 showSnackBar { refreshData() }
-                processError(error = it, display = false)
+                processError(it)
             })
             .addToSubscriptions()
     }
@@ -79,7 +83,11 @@ class CurrencyViewModel(
             .flatMapCompletable { it.loadFromDatabase() }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ }, { processError(error = it) })
+            .subscribe({ }, {
+                isRefreshing.value = false
+                isInternetConnected.value = false
+                processError(it)
+            })
             .addToSubscriptions()
     }
 

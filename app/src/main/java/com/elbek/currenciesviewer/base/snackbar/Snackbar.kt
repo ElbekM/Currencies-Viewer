@@ -10,7 +10,7 @@ import com.google.android.material.snackbar.Snackbar
 class Snackbar {
 
     fun showMessageWithAction(view: View, context: Context, action: () -> Unit) {
-        val snackbar = Snackbar.make(view, "No internet connection", Snackbar.LENGTH_LONG)
+        val snackbar = Snackbar.make(view, R.string.src_currency_screen_no_internet_connection, Snackbar.LENGTH_LONG)
         snackbar.view.setBackgroundColor(
             ContextCompat.getColor(context, R.color.snackbar_background)
         )
@@ -19,7 +19,7 @@ class Snackbar {
 
         snackbar.view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
             .maxLines = 5
-        snackbar.setAction("Retry") { action() }
+        snackbar.setAction(R.string.src_currency_screen_retry) { action() }
         snackbar.show()
     }
 }

@@ -57,6 +57,13 @@ class CurrencyFragment : BaseDialogFragment<CurrencyViewModel>() {
             isRefreshing.observe { refreshing ->
                 refreshing?.let { swipeRefreshLayout.isRefreshing = it }
             }
+
+            isInternetConnected.observe { connected ->
+                connected?.let {
+                    exchangeTitleTextView.visibility = setVisibility(it)
+                    noInternetConnectionTextView.visibility = setVisibility(!it)
+                }
+            }
         }
     }
 

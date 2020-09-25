@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.KeyEvent
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.MutableLiveData
@@ -83,8 +82,6 @@ abstract class BaseDialogFragment<TViewModel> : DialogFragment() where TViewMode
                     snackbar.showMessageWithAction(requireView(), requireContext(), it)
                 }
             }
-
-            showMessageCommand.observe { Toast.makeText(context, it, Toast.LENGTH_LONG).show() }
         }
     }
 

@@ -12,7 +12,6 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
     private val subscriptions: MutableList<Disposable> = mutableListOf()
 
     val closeCommand = LiveEvent()
-    val showMessageCommand = LiveArgEvent<String>()
     val showSnackBarCommand = LiveArgEvent<() -> Unit>()
 
     open fun destroy() {
@@ -22,17 +21,9 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
 
     open fun back() = closeCommand.call()
 
-    protected fun processError(
-        tag: String = "CurrenciesApp",
-        error: Throwable,
-        display: Boolean = true
-    ) {
-        Log.e(tag, error.localizedMessage!!)
-
-        if (display) showToast("Something went wrong")
+    protected fun processError(error: Throwable) {
+        Log.e("CurrenciesApp", error.localizedMessage!!)
     }
-
-    protected fun showToast(message: String) = showMessageCommand.call(message)
 
     protected fun showSnackBar(action: () -> Unit) {
         showSnackBarCommand.call(action)
