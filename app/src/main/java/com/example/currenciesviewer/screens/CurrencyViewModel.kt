@@ -15,7 +15,7 @@ class CurrencyViewModel(private val apiService: CurrencyService, application: Ap
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { currencies ->
-
+                currencies
             }
             .addToSubscriptions()
 

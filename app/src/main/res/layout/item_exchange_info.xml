@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@color/color_background"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/valuteNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                tools:text="Австралийский доллар" />
+
+            <TextView
+                android:id="@+id/valuteCharCodeTextView"
+                style="@style/ValuteInfoText"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/valuteNameTextView"
+                android:text="Букв. код:" />
+
+            <TextView
+                android:id="@+id/valuteCharCodeValueTextView"
+                style="@style/ValuteInfoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/valuteNameTextView"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@+id/valuteCharCodeTextView"
+                android:textStyle="bold"
+                tools:text="AUD" />
+
+            <TextView
+                android:id="@+id/valuteNumCodeTextView"
+                style="@style/ValuteInfoText"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/valuteCharCodeTextView"
+                android:text="Цифр. код:" />
+
+            <TextView
+                android:id="@+id/valuteNumCodeValueTextView"
+                style="@style/ValuteInfoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/valuteCharCodeTextView"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@+id/valuteNumCodeTextView"
+                android:textStyle="bold"
+                tools:text="036" />
+
+            <TextView
+                android:id="@+id/valuteNominalTextView"
+                style="@style/ValuteInfoText"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/valuteNumCodeTextView"
+                android:text="Едениц:" />
+
+            <TextView
+                android:id="@+id/valuteNominalValueTextView"
+                style="@style/ValuteInfoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/valuteNumCodeTextView"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@+id/valuteNominalTextView"
+                android:textStyle="bold"
+                tools:text="1" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5">
+
+            <TextView
+                android:id="@+id/rateTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Курс"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/currentRateValueTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/deltaValueTextView"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:text="54.371" />
+
+            <TextView
+                android:id="@+id/deltaValueTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/deltaStateUpImageView"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:text="1.5" />
+
+            <ImageView
+                android:id="@+id/deltaStateUpImageView"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="3dp"
+                android:src="@drawable/ic_rate_up"
+                app:tint="@color/green"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/deltaStateDownImageView"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="3dp"
+                android:src="@drawable/ic_rate_down"
+                android:visibility="gone"
+                app:tint="@color/red"
+                tools:ignore="ContentDescription" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

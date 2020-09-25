@@ -14,6 +14,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
+import com.example.currenciesviewer.R
 import com.example.currenciesviewer.base.livedata.LiveArgEvent
 import com.example.currenciesviewer.base.livedata.LiveEvent
 
@@ -28,6 +29,7 @@ abstract class BaseDialogFragment<TViewModel> : DialogFragment() where TViewMode
         super.onCreate(savedInstanceState)
 
         isCancelable = false
+        setStyle(STYLE_NO_TITLE, R.style.AppTheme)
     }
 
     override fun onDestroyView() {
