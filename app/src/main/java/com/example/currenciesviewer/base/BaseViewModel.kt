@@ -7,6 +7,8 @@ import androidx.lifecycle.AndroidViewModel
 import com.example.currenciesviewer.base.livedata.LiveArgEvent
 import com.example.currenciesviewer.base.livedata.LiveEvent
 import io.reactivex.disposables.Disposable
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 abstract class BaseViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -15,8 +17,8 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
     protected val context: Context by lazy { getApplication<Application>() }
 
     val closeCommand = LiveEvent()
-    val showMessageCommand =
-        LiveArgEvent<String>()
+    val showMessageCommand = LiveArgEvent<String>()
+    val showSnackBarCommand = LiveArgEvent<() -> Unit>()
 
     open fun destroy() {
         subscriptions.forEach { it.dispose() }
@@ -40,6 +42,10 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
     }
 
     protected fun showToast(message: String) = showMessageCommand.call(message)
+
+    protected fun showSnackBar(action: () -> Unit) {
+        showSnackBarCommand.call(action)
+    }
 
     protected fun Disposable.addToSubscriptions() { subscriptions.add(this) }
 }

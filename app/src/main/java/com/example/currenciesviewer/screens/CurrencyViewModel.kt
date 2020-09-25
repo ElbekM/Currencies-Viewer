@@ -69,6 +69,8 @@ class CurrencyViewModel(
                     valuteList.value = it.second
                     setActualDate(it.first)
                 } ?: refreshData()
+
+                showSnackBar { refreshData() }
             })
             .addToSubscriptions()
     }

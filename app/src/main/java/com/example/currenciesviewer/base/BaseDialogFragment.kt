@@ -11,19 +11,20 @@ import android.os.Looper
 import android.view.KeyEvent
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.example.currenciesviewer.R
 import com.example.currenciesviewer.base.livedata.LiveArgEvent
 import com.example.currenciesviewer.base.livedata.LiveEvent
+import com.example.currenciesviewer.base.snackbar.Snackbar
 
 abstract class BaseDialogFragment<TViewModel> : DialogFragment() where TViewModel : BaseViewModel {
 
-    protected abstract val viewModel: TViewModel
-
     private val originalScreenOrientationKey: String = ::originalScreenOrientationKey.name
+    private val snackbar = Snackbar()
+
+    protected abstract val viewModel: TViewModel
     protected open val screenOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,6 +84,12 @@ abstract class BaseDialogFragment<TViewModel> : DialogFragment() where TViewMode
         with(viewModel) {
             closeCommand.observe { close() }
 
+            showSnackBarCommand.observe {
+                it?.let {
+                    snackbar.showMessageWithAction(requireView(), requireContext(), it)
+                }
+            }
+
             showMessageCommand.observe { Toast.makeText(context, it, Toast.LENGTH_LONG).show() }
         }
     }
@@ -109,8 +116,3 @@ fun DialogFragment.showAllowingStateLoss(fm: FragmentManager, tag: String = this
         .add(this, tag)
         .addToBackStack(tag)
         .commitAllowingStateLoss()
-
-val Fragment.parent: Any?
-    get() = parentFragment ?: activity
-
-inline fun <reified T> Fragment.castParent(): T? = parent as? T
